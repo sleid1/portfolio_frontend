@@ -13,15 +13,21 @@ const Work = () => {
    const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
    const [works, setWorks] = useState([]);
    const [filterWork, setFilterWork] = useState([]);
-   const techStack = [
-      'HTML',
-      'CSS',
-      'Javascript',
-      'React',
-      'Next',
-      'Express',
-      'All',
-   ];
+
+   // Create a Set to store unique tags
+   const uniqueTags = new Set();
+
+   // Iterate through the projects and add tags to the Set
+   works.forEach((work) => {
+      work.tags.forEach((tag) => {
+         if (tag !== '') {
+            uniqueTags.add(tag);
+         }
+      });
+   });
+
+   // Convert the Set back to an array
+   const uniqueTagsArray = Array.from(uniqueTags);
 
    useEffect(() => {
       const query = '*[_type == "works"]';
@@ -31,8 +37,6 @@ const Work = () => {
          setFilterWork(data);
       });
    }, []);
-
-   console.log(works);
 
    const handleWorkFilter = (item) => {
       setActiveFilter(item);
@@ -56,7 +60,7 @@ const Work = () => {
          </h2>
 
          <div className="app__work-filter">
-            {techStack.map((item, index) => (
+            {uniqueTagsArray.map((item, index) => (
                <div
                   key={index}
                   onClick={() => handleWorkFilter(item)}
