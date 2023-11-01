@@ -1,11 +1,13 @@
-const fetch = require('node-fetch');
-
 exports.handler = async function (event, context) {
-   const sanityStudioURL = 'https://kristijandini.sanity.studio';
    const path = event.path;
+   const sanityStudioURL = 'https://kristijandini.sanity.studio';
    const url = `${sanityStudioURL}${path}`;
 
    try {
+      // Use dynamic import to load 'node-fetch'
+      const fetchModule = await import('node-fetch');
+      const fetch = fetchModule.default;
+
       const response = await fetch(url, {
          method: event.httpMethod,
          headers: event.headers,
