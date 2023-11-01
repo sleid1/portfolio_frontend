@@ -29,6 +29,15 @@ const Work = () => {
    // Convert the Set back to an array
    const uniqueTagsArray = Array.from(uniqueTags);
 
+   // Use the filter method to remove "All" from the array
+   const filteredArray = uniqueTagsArray.filter((tag) => tag !== 'All');
+
+   // Sort the filtered array alphabetically
+   const sortedArray = filteredArray.sort();
+
+   // Add "All" to the end of the sorted array using concat
+   const rearrangedArray = sortedArray.concat('All');
+
    useEffect(() => {
       const query = '*[_type == "works"]';
 
@@ -60,7 +69,7 @@ const Work = () => {
          </h2>
 
          <div className="app__work-filter">
-            {uniqueTagsArray.map((item, index) => (
+            {rearrangedArray.map((item, index) => (
                <div
                   key={index}
                   onClick={() => handleWorkFilter(item)}
