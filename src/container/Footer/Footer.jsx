@@ -51,10 +51,10 @@ const Footer = () => {
                   alt="email"
                />
                <a
-                  href="mailto:hello@micael.com"
+                  href="mailto:kristijan.dini1@gmail.com"
                   className="p-text"
                >
-                  hello@micael.com
+                  kristijan.dini1@gmail.com
                </a>
             </div>
             <div className="app__footer-card">
@@ -63,10 +63,10 @@ const Footer = () => {
                   alt="phone"
                />
                <a
-                  href="tel:+1 (123) 456-7890"
+                  href="tel:+385 98217124"
                   className="p-text"
                >
-                  +1 (123) 456-7890
+                  +385 98 217 124
                </a>
             </div>
          </div>
